@@ -1,5 +1,12 @@
 FROM python:3.9
 
+RUN apt-get update && apt-get install -y cron
+
+COPY crontab /etc/cron.d/data_pipeline_cron
+RUN chmod 0644 /etc/cron.d/data_pipeline_cron && crontab /etc/cron.d/data_pipeline_cron
+
+RUN touch /var/log/cron.log
+
 RUN useradd -m -u 1000 user
 USER user
 ENV PATH="/home/user/.local/bin:$PATH"
@@ -13,10 +20,5 @@ COPY --chown=user . /app
 
 COPY --chown=user weights /app/weights
 COPY --chown=user *.py /app/
-
-COPY --chown=user startup.sh /app/startup.sh
-RUN chmod +x /app/startup.sh
-
-EXPOSE 8501
 
 CMD ["/app/startup.sh"]

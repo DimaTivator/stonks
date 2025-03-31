@@ -1,10 +1,10 @@
 #!/bin/bash
 python data_pipeline.py
 
-python3 scheduler.py &
+service cron start
 
-streamlit run app.py \
+CMD streamlit run app.py \
+    --server.address 0.0.0.0 \
+    --server.port 7860 \
     --server.headless true \
-    --server.enableCORS false \
-    --server.enableXsrfProtection false \
     --server.fileWatcherType none
