@@ -1,1 +1,0 @@
-0 */6 * * * python3 /app/data_pipeline.py >> /var/log/cron.log 2>&1
