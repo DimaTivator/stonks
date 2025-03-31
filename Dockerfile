@@ -21,4 +21,5 @@ COPY --chown=user . /app
 COPY --chown=user weights /app/weights
 COPY --chown=user *.py /app/
 
+EXPOSE 7860
 CMD ["/app/startup.sh"]
