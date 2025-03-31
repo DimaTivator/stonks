@@ -17,7 +17,9 @@ COPY --chown=user *.py /app/
 COPY --chown=user startup.sh /app/startup.sh
 RUN chmod +x /app/startup.sh
 
+COPY crontab /etc/cron.d/data_pipeline_cron
+RUN chmod 0644 /etc/cron.d/data_pipeline_cron && crontab /etc/cron.d/data_pipeline_cron
+
 EXPOSE 8501
 
 CMD ["/app/startup.sh"]
-
