@@ -1,0 +1,13 @@
+streamlit
+pandas
+plotly
+statsmodels
+numpy 
+
+requests
+yfinance
+bs4
+tqdm
+
+torch
+transformers
