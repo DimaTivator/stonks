@@ -3,7 +3,7 @@ python data_pipeline.py
 
 service cron start
 
-CMD streamlit run app.py \
+streamlit run app.py \
     --server.address 0.0.0.0 \
     --server.port 7860 \
     --server.headless true \
