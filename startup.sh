@@ -1,5 +1,5 @@
 #!/bin/bash
-python data_pipeline.py
+python data_pipeline.py &
 
 while true; do
   sleep 6h
