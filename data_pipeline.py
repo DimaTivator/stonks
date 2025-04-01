@@ -4,28 +4,18 @@ import scraper
 import sentiment
 from price_forecast import get_price_forecast
 
+import sys
 import os
 import pandas as pd
 
 
 def create_dirs():
-    if not os.path.exists(Config.NEWS_DATA_PATH):
-        os.makedirs(Config.NEWS_DATA_PATH)
-
-    if not os.path.exists(Config.STOCKS_DATA_PATH):
-        os.makedirs(Config.STOCKS_DATA_PATH)
-
-    if not os.path.exists(Config.WEIGHTS_PATH):
-        os.makedirs(Config.WEIGHTS_PATH)
-
-    if not os.path.exists(Config.SENTIMENTS_DATA_PATH):
-        os.makedirs(Config.SENTIMENTS_DATA_PATH)
-
-    if not os.path.exists(Config.MERGED_DATA_PATH):
-        os.makedirs(Config.MERGED_DATA_PATH)
-
-    if not os.path.exists(Config.FORECAST_DATA_PATH):
-        os.makedirs(Config.FORECAST_DATA_PATH)
+    os.makedirs(Config.NEWS_DATA_PATH, exist_ok=True)
+    os.makedirs(Config.STOCKS_DATA_PATH, exist_ok=True)
+    os.makedirs(Config.WEIGHTS_PATH, exist_ok=True)
+    os.makedirs(Config.SENTIMENTS_DATA_PATH, exist_ok=True)
+    os.makedirs(Config.MERGED_DATA_PATH, exist_ok=True)
+    os.makedirs(Config.FORECAST_DATA_PATH, exist_ok=True)
 
 
 def merge_stocks_sentiments():
@@ -53,8 +43,6 @@ def merge_stocks_sentiments():
 
 
 def update_price_sentiment_dataset():
-    create_dirs()
-
     scraper.update_news(Config.TICKERS, Config.NEWS_DATA_PATH)
     scraper.update_stocks(Config.TICKERS, Config.STOCKS_DATA_PATH)
 
@@ -81,5 +69,8 @@ def update_price_forecast():
 
 
 if __name__ == "__main__":
+    if len(sys.argv) > 1 and sys.argv[1] == "init":
+        create_dirs()
+    
     update_price_sentiment_dataset()
     update_price_forecast()
