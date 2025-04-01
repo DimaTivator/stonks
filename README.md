@@ -74,18 +74,27 @@ pip install -r requirments.txt
 ## Project Structure
 
 `data/` - Contains collected news data, preprocessed texts, stocks prices and forecasts
+
 `images/` – Stores images used for documentation
+
 `research/` – Includes Jupyter notebooks for experiments, data analysis, and model evaluation
+
 `weights/` – Directory for storing model weights
 
 `data_pipeline.py` – Main script that manages data collection and forecasting
 
 `app.py` – The main Streamlit application
+
 `config.py` – Configuration file that stores constants and paths
+
 `crontab` – Cron job configuration file for automating periodic data updates
+
 `model.py` – Contains ML models for sentiment analysis and forecasting
+
 `price_forecast.py` – Processes stock data and runs forecasting model
+
 `scraper.py` – Fetches financial news and stock market data
+
 `sentiment.py` – Processes news and computes sentiment scores for them
 
 
